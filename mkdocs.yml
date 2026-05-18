@@ -1,0 +1,48 @@
+site_name: Introduction to Linux Command Line
+site_author: Institute of Biomedical Engineering, University of Oxford
+site_dir: public
+site_url: https://mydomain.org/IBME_HPC_Training
+
+#Repository information
+repo_name:  Institute-of-Biomedical-Engineering/Training_Linux_CLI
+repo_url: https://github.com/Institute-of-Biomedical-Engineering/Training_Linux_CLI
+
+
+theme:
+  name: material
+  font:
+    text: Inter
+    code: Fira Code
+  logo: images/IBME_OU_logo.jpg
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+
+# markdown_extensions:
+#   - admonition
+#   - pymdownx.details
+#   - pymdownx.superfences
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+
+extra_css:
+  - stylesheets/extra.css
