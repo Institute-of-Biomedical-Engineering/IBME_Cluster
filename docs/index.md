@@ -14,12 +14,12 @@
 
 | **Lesson**                                         | **Overview** | 
 |:---------------------------------------------------|:-------------|
-|1. [Introducing the shell](./1_background_introduction.md)| Introduce the shell |
-|2. [Navigating and Managing files and directories](./2_navigating_files_and_dirs.md)| moving around the filesystem|
-|3. [Creating, viewing, and editing files  ](./3_absolute_vs_relativepath.md)| Working with files from the shell|
-|4. [Linux file system permission](./4_working_with_files_and_directories.md)| Control access to files and directories|
-|5. [Transferring files to and from remote machine](./4_working_with_files_and_directories.md)| Copying files to and from HPC cluster |
-|6. [Redirection](./5_redirection.md)|Employ the grep command to search for information within files|
+|1. [Cluster Introduction](./1_Cluster_introduction.md)| Introduction to IBME Cluster |
+|2. [Data Transfer](./2_Transferring_files_to_remote_machine.md)| Transferring data to the cluster|
+|3. [Editing files on the cluster](./3_Editing_files.md)| Working with files in the cluster|
+|4. [Module and packages](./4_Modules_packages)| Install modules and packages in the cluster|
+|5. [Batch and interactive sessions](./5_Sessions.md)| Running jobs in the cluster |
+
 
 
 

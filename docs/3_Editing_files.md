@@ -1,61 +1,71 @@
-# 3. Creating, viewing and editing files
+# 3. Editing files on the Cluster
+
+The `vim` and `nano` commands are useful for making small edits and quick corrections to files on the HPC system. However, unlike modern code editors, they lack many advanced development features, including Git integration, debugging tools, integrated terminals, extensions, and syntax/error checking for multiple programming languages. As a result, they can be less convenient and more difficult to use when writing scripts or programs from scratch.
+
+Visual Studio Code (VS Code) is a widely used code editor available for Linux, Windows, and macOS. It can connect directly to an HPC cluster, allowing users to edit and manage remote files as if they were stored on their local machine. The [**Installer**](https://code.visualstudio.com/Download) for each operating system can be downloaded from the official VS Code website. After downloading, double-click the installer to install VS Code on your computer.
+
+See the steps bellow to connect VS Code to the IBME cluster:
+
+- Depending on the installation, VS Code can be launched from the <img src="../asset/vscode.webp" alt="VS Code" width="30"/> icon on the desktop. If the desktop icon is not available, it can be opened using the Windows search bar. On macOS, VS Code can be launched from the Dock or Spotlight. On Linux, VS Code is available from the application menu.
 
 
-## Creating files
-
-In an HPC system, configuration files often need to be created in the form of text-based files such as YAML. There are several ways to create files from the command line. One common method is the `touch` command, which creates a file if it does not already exist. Although `touch` is typically used to update a file’s timestamp without modifying its contents, it will create a new file when used with a filename that does not exist.
-
-!!! terminal "code"
-    ```bash
-    $ touch FileExp.fastq
-    ```
-    use command `ls` to confirm that the `FileExp.fastq` exists
-    ```bash
-    $ ls
-    FileExp.fastq
-    ```
-## Editing files
-
-Terminal-based text editors like `vim` and `nano` are mainly used to edit files but can also create them if they do not exist. They not only create files but also open them in editor mode. These text editors come preinstalled with many Linux distributions. To start a text editor like `vim`, you can use the `vim` command followed by the filename.
-
-!!! terminal "code"
-    ```bash
-    $ vim FileExpT1.fastq
-    ```
-
-The `vim` command opens a file (or creates and opens it) in *command mode*. Command mode is useful for text manipulation tasks such as cutting and pasting, but it does not allow text to be typed. Typing text can be done by switching from *command mode* to *insert mode* by pressing the **i** key. Once the text has been entered in *insert mode*, you must exit it and return to *command mode*. This is done by pressing the **Esc** key. Once in *command mode*, there are several options:
+- To ensure that files edited on the local computer are compatible with HPC systems, go to *File > Preferences > Settings*. This opens the Settings panel. In the left-side pane, select *Text Editor > Files*. This opens the Files section of the text editor. Scroll down to EOL and select `/n` from the dropdown menu. Close the Settings panel.
 
 
-- `:w` — saves the file and remains in the command mode
-- `:wq` — saves the file and exit to the terminal
-- `:q!` — doesn't save the file and exit to the terminal
+- Install Remote-SSH extension: Click on the *Extensions* button in the sidebar to open the Extensions Marketplace tab. Enter *Remote-SSH* in the search bar and select the first result. The installation page will open on the right. Click *Install* to install the extension.
 
-The *visual mode* is another way to manipulate text. This mode can be entered from the *command mode* by pressing:
+<p align="center">
+    <img src="../images/remote_ssh.jpg" width="720">
+</p>
 
-- `v` — character manupulation
-- `V` — line manupulation
+- Enable login terminal: Navigate to *File > Preferences > Settings* and search for *Remote.SSH: Show Login Terminal*. Ensure that the *Always reveal the SSH login terminal* option is checked. Restart VS Code.
 
 
-## Viewing files
+- Type *Ctrl + Shift + P* to open the command palette, then type *Remote-SSH: Connect to Host* in the search bar and select it from the dropdown. Next, choose *Add New SSH Host…* to add a new SSH connection.
 
-The quickest way to view a file is by using `less` command. 
+<p align="center">
+    <img src="../images/connect_host.png" width="720">
+</p>
 
-!!! terminal "code"
-    ```bash
-    $ less FileExpT1.fastq
-    ```
+- Ensure the local computer is connected to the IBME network or you are connected to the VPN.
 
-It lets the user view the file in an interactive format by allowing scrolling, searching, and navigation. Some useful keys for the `less` command are:
+- Enter the `SSH` connection command `ssh <userid>@engs-ibmecluster01.eng.ox.ac.uk` if you are on the IBME network or `ssh -L 7719:localhost:22 -J <userid>@ibme-ssh-gateway.eng.ox.ac.uk <userid>@engs-ibmecluster01.eng.ox.ac.uk` if you are connecting via VPN.
+Note: Replace the `<userid>` with your cluster username.
 
-- `j / k` — for scrolling up/down
-- `space` — next page
-- `b` — previous page
-- `/[search key work]` — search word
-- `q` — quite page
+<p align="center">
+    <img src="../images/remote_address.png" width="720">
+</p>
 
-If the file to be viewed is small in size, the command `cat` can be used. This command doesn't start an interactive session. It just prints the content of the file in the terminal.
+- Save the configuration file. Select the first option in the dropdown menu; this saves the configuration file in the user’s home directory on Windows.
 
-!!! terminal "code"
-    ```bash
-    $ cat FileExpT1.fastq
-    ```
+<p align="center">
+    <img src="../images/config_file.png" width="720">
+</p>
+
+
+- Type *Ctrl + Shift + P* to open the command palette, then type *Remote-SSH: Connect to Host* in the search bar and select it from the dropdown. If the configuration file was saved in the previous step, the remote host will appear in the next dropdown menu. Click on the remote host to establish the connection.
+
+
+<p align="center">
+    <img src="../images/remote_host.png" width="720">
+</p>
+
+- If prompted to select the type of platform you are connecting to, choose *Linux*
+
+- A new VS Code window will open and attempt to connect to the IBME cluster. When prompted, enter the password associated with `<userid>`. Once authentication is successful, VS Code will be connected to the cluster.
+
+- To open a directory on the cluster, click *Explorer* in the new VS Code window and select *Open Folder*. Enter the directory path and click *OK*. 
+
+<p align="center">
+    <img src="../images/connected.png" width="720">
+</p>
+
+- The IBME cluster may prompt you to enter the password associated with your user account again. Once authentication is successful, the files and directories will appear in the Explorer pane, where they can be edited and saved directly to the cluster through VS Code, with full compatibility for installed extensions.
+
+- A bash terminal on the cluster can also be opened directly from VS Code.
+
+<p align="center">
+    <img src="../images/start_terminal.png" width="720">
+</p>
+
+- Log in to the head node using the command `ssh headnode1`. Once connected, Slurm commands and other IBME HPC utilities will be available directly within VS Code, allowing you to interact with the cluster.

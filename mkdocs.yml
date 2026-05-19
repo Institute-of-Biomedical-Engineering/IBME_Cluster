@@ -1,11 +1,11 @@
-site_name: Introduction to Linux Command Line
+site_name: IBME HPC Cluster
 site_author: Institute of Biomedical Engineering, University of Oxford
 site_dir: public
-site_url: https://mydomain.org/IBME_HPC_Training
+site_url: https://mydomain.org/IBME_Cluster
 
 #Repository information
 repo_name:  Institute-of-Biomedical-Engineering/Training_Linux_CLI
-repo_url: https://github.com/Institute-of-Biomedical-Engineering/Training_Linux_CLI
+repo_url: https://github.com/Institute-of-Biomedical-Engineering/IBME_Cluster
 
 
 theme:
