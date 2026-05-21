@@ -2,7 +2,7 @@
 
 ## Pre-installed software
 
-There are a few softwares that are pre-installed on the IBME cluster that are available to the users. The GPU software stack in the modules are:
+Several software/module packages are pre-installed on the IBME cluster and are available to users. The GPU module stack available on the IBME cluster is listed below:
 
 | **Name**                                         | **Version** | **Description** |
 |:---------------------------------------------------|:-------------| :-------------|
@@ -10,14 +10,14 @@ There are a few softwares that are pre-installed on the IBME cluster that are av
 |cuDNN |  `6.0.20`,    `7.0.1`,    `7.5.0`| CUDA Deep Neural Network Library |
 |NCCL | `1.3.5`,    `2.1.2`,    `2.3.7`,    `2.4.2`| NVIDIA Collective Communications Library. |
 
-The rest of the modules are for infrastructure/support that help the cluster environment work. One in the headnode1, the `module` tools can be used to view or interact with the modules. For exaample:
+The remaining software provide infrastructure and support services that help maintain the cluster environment. Once logged in to `headnode1`, the `module` command can be used to view and interact with the available modules. For exaample:
 
-- The `module avail` or `module spider` command shows the available module in the system
-- The `module load <module_name-version>` loads a module. (Note: replace the module_name and version to load a specific module)
-- The `module unload <module_name-version>` unloads a module.
-- The `module list` command shows the loaded module
+- The `module avail` or `module spider` command shows the available modules in the system.
+- The `module load <module_name-version>` command loads a module. (Note: replace `<module_name-version>` with the specific module and version you want to load.)
+- The `module unload <module_name-version>` command unloads a module.
+- The `module list` command shows the currently loaded modules.
 
-Once the module is loaded it is automatically added to the PATH variable, which can be checked with the `echo $PATH` commans.
+Once a module is loaded, it is automatically added to the PATH environment variable. This can be verified using the `echo $PATH` command.
 
 !!! terminal "code"
     ```bash
@@ -28,44 +28,44 @@ Once the module is loaded it is automatically added to the PATH variable, which 
 
 ## The Mamba or Conda package manager
 
-As the available packages are limited, there may be situations where additional software needs to be installed. The Mamba package manager is one way to install additional software. Mamba is a faster successor to Conda and can be used interchangeably with Conda in most commands. Mamba is an open-source alternative to Conda, implemented in C++ to provide improved performance and faster dependency resolution.
+As the number of pre-installed packages is limited, there may be situations where additional software needs to be installed. One way to install additional software is through the Mamba package manager. Mamba is a faster, open-source alternative to Conda, implemented in C++ to provide improved performance and faster dependency resolution. In most cases, Mamba can be used interchangeably with Conda using the same commands.
 
-With Mamba different version of the same software can be installed in the HPC (or other machines) which are organised in virtual environments. The software can be installed locally on HPC without needing the permission of the IBME HPC admin. 
+Mamba allows different versions of the same software to be installed on the HPC system (or other machines) within isolated virtual environments. Software can be installed locally on the HPC without requiring permission from the IBME HPC administrators.. 
 
 ## Installing Mamba on the IBME cluster
 
-Before using Mamba on the IBME cluster it must be installed (Mamba is already preinstalled on the BMRC cluster). Follow the steps below to install Mamba on the IBME cluster. 
+Before using Mamba on the IBME cluster, it must be installed (Mamba is already preinstalled on the BMRC cluster). Follow the steps below to install Mamba on the IBME cluster:
 
 - Login to the IBME cluster - `ssh <userid>@engs-ibmecluster01.eng.ox.ac.uk`
 
 - In the login node make a shell variable `dir="/users/<userid>/miniforge3"`
 
 
-- Download the installer using `wget`. Information about the installer is available on the official GitHub [**page**](https://github.com/conda-forge/miniforge/)
+- Download the installer using `wget`. Information about the installer is available on the official GitHub [**page**](https://github.com/conda-forge/miniforge/) repository.
 
- !!! terminal "code"
+!!! terminal "code"
     ```bash
     $ wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
     ```
-    Once the installer has been downloaded, it will be available in the current directory as `Miniforge3-Linux-x86_64.sh`
+    Once the installer has been downloaded, it will be saved in the current directory as `Miniforge3-Linux-x86_64.sh`
 
-- Run the installer and save the installed packages in the `miniforge3` directory
+- Run the installer to install the packages into the `miniforge3` directory.
 
- !!! terminal "code"
+!!! terminal "code"
     ```bash
     $ bash Miniforge3-$(uname)-$(uname -m).sh -b -p $dir
     ```
 
-- Modify the shell configuration for Mamba
+- Configure the shell environment for Mamba
 
 !!! terminal "code"
     ```bash
     $ dir/bin/mamba shell init --shell bash
     ```
 
-- Restart the terminal by logining out and in of the IBME cluster. 
+- Log out of the IBME cluster and log back in to restart the terminal session.
 
-- Run the following commands to installs software repository (which are called channels) for Mamba
+- Run the following commands to add software repositories (known as channels) to Mamba.
 
 !!! terminal "code"
     ```bash
@@ -74,7 +74,7 @@ Before using Mamba on the IBME cluster it must be installed (Mamba is already pr
     $ conda config --add channels conda-forge
     $ conda config --set channel_priority strict
     ```
-- Check the repositories are installed 
+- Verify that the repositories have been installed.
 
 !!! terminal "code"
     ```bash
@@ -92,7 +92,7 @@ Before using Mamba on the IBME cluster it must be installed (Mamba is already pr
 
 ## Installing software on the IBME cluster
 
-To install software on the IBME cluster using Mamba a software environment (e.g. ImageAnalysis) must be created and activated. This can be created using command:
+To install software on the IBME cluster using Mamba, first create and activate a software environment (for example, ImageAnalysis) using the following command:
 
 !!! terminal "code"
     Create environment
@@ -105,16 +105,18 @@ To install software on the IBME cluster using Mamba a software environment (e.g.
     ```bash
     $ mamba activate ImageAnalysis
     ```
-Once activated the environment name will appear in bracket - (ImageAnalysis). Look for the software to install from the repository, for example the [conda-forge](https://conda-forge.org/packages/?) repository. In the example below `CUDA` software will be installed from conda-forge [repository](https://anaconda.org/channels/conda-forge/packages/cuda/overview) in the software environment:
+
+
+Once activated, the environment name will appear in parentheses (e.g. (ImageAnalysis)). Next, identify the software to install from a repository, such as the [conda-forge](https://conda-forge.org/packages/?) channel. In the example below, CUDA is installed from the conda-forge [repository](https://anaconda.org/channels/conda-forge/packages/cuda/overview) into the active software environment.
 
 !!! terminal "code"
     ```bash
     $ mamba install conda-forge::cuda
     ```
 
-We will not specify a specific version for the installation, as a result, Mamba will install the latest available package this is compatible on the IBME cluster system, which in this case was *CUDA 12.6.3*. This is not the latest version of CUDA but is a lot newer that the latest installed in the IBME cluster. 
+We will not specify a fixed version during installation. As a result, Mamba will install the latest available package that is compatible with the IBME cluster environment. In this case, that was `CUDA 12.6.3`. While this is not the most recent CUDA release available, it is significantly newer than the default CUDA version installed on the IBME cluster.
 
-The command above also installs many other CUDA related software packages, which are not available in latest version available in the IBME cluster. For example the `nvcc` and `gcc` compiler. 
+The command above also installs a number of additional CUDA-related packages that are not available in the latest versions provided on the IBME cluster. These include key development tools such as the `nvcc`  and the `gcc` compiler.
 
 The mamba environment can be deactivated using command:
 
@@ -125,7 +127,7 @@ The mamba environment can be deactivated using command:
 
 
 !!! info
-    Installing software using Mamba also installes a large number of dependencies. Creating many software environments and installing softwares withing them can quickly fill up the the user's home directory. Therefore it is advisable to archive the software environment when its not needed. The software environments are located in `/users/<userid>/miniforge3/envs`.
+    Installing software with Mamba also installs a large number of dependencies. Creating multiple environments and installing software within them can quickly consume space in the user’s home directory. It is therefore recommended to archive or remove environments that are no longer in use. Mamba environments are typically located in /users/<userid>/miniforge3/envs.
 
 
 
