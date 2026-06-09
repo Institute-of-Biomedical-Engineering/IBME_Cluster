@@ -32,7 +32,7 @@ The core components of the cluster include:
 
 
 
-- **Head None:** To submit jobs to the compute nodes, the user must first log in to the head node. The command to log in to the head node is `ssh headnode01`. Once logged in, the terminal prompt changes to `[<userid>@headnode1 ~]`.
+- **Head None:** To submit jobs to the compute nodes, the user must first log in to the head node. The command to log in to the head node is `ssh headnode1`. Once logged in, the terminal prompt changes to `[<userid>@headnode1 ~]`.
 
     The head node in the IBME cluster runs CentOS Linux (based on Red Hat Enterprise Linux) and hosts the SLURM scheduler, which users can use to submit jobs to the compute nodes. Instructions on how to use SLURM in the IBME cluster are provided in the [Batch and interactive sessions section](http://127.0.0.1:8000/IBME_Cluster/5_Sessions/).
 
