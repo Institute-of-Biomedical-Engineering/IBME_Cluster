@@ -3,22 +3,21 @@
 
 ## Batch Sessions 
 
-In batch computing environments, jobs are submitted to compute nodes through the SLURM scheduler. SLURM ensures that the resources (GPUs, CPUs and Memory) are efficiently utilised across the cluster. It evaluates each job based on factors including requested runtime, required resources, and current cluster availability, then assigns priorities to determine job scheduling order.
+In batch computing environments, jobs are submitted to compute nodes through the SLURM scheduler. SLURM ensures that the resources (GPUs, CPUs and memory) are efficiently utilised across the cluster. It evaluates each job based on factors including requested runtime, required resources, and current cluster availability, then assigns priorities to determine job scheduling order.
 
 ## Submitting jobs using SLURM and Mamba
 
-To submit the job to the compute node with the SLURM scheduler, the code to be run should be included in a shell script `(.sh)`. We have created an example shell script to work through the process and requirements of submitting the job to the compute node. Once connected to the IBME cluster, from the login node:
+To submit a job to a compute node via the SLURM scheduler, your commands must be included in a shell script (a `.sh` file). We have created an example script to walk you through the submission process and its requirements. Once you are connected to the IBME cluster, run the following commands from the login node:
 
--   Create and activate a Mamba environment (you can also create a Python virtual environment). This is to ensure we are in an isolated environment and that the packages we install do not interfere with our other work in the cluster. 
+-   Create and activate a Mamba environment (alternatively, you can also create a Python virtual environment). This is to ensure we are in an isolated environment and that the packages we install do not interfere with our other work in the cluster. 
 
     !!! terminal "code"
         ```bash
         $ mamba create --name ImageAnalysis
         $ mamba activate ImageAnalysis
-        $ mamba install -c conda-forge matplotlib; mamba install -c conda-forge numpy
         ```
 
--   Make a directory, `cd` into the directory. The output of the jobs submitted through SLURM is saved in the directory where the jobs are submitted from. Therefore, it is recommended to create one directory per project and subdirectories to store job output each time a job is submitted.
+-   Make a directory and `cd` into it. Because SLURM saves job output in the directory from which the jobs are submitted, it is recommended to create a dedicated directory for each project, along with specific subdirectories to organize the output of each job.
 
     !!! terminal "code"
         ```bash
@@ -26,7 +25,7 @@ To submit the job to the compute node with the SLURM scheduler, the code to be r
         $ cd Example_job
         ```
 
--   Download a shell and Python script file using the following command:
+-   Download the shell and Python script files using the following commands:
 
     !!! terminal "code"
         ```bash
@@ -46,9 +45,9 @@ To submit the job to the compute node with the SLURM scheduler, the code to be r
         python3 Example_python.py
         ```
 
-    The shell script can be thought of as a manual for the compute node. The compute node reads the shell script and runs the commands line by line sequentially. The first line of the script `#!/bin/bash` instructs the system to run the script as a `bash` shell. The second line of the script prints a message and the third line prints the hostname. The final line of the script runs the Python script `Example_python.py`. The Python script generates some random numbers, generates the plot and saves it as a `plot.png` file. 
+    The shell script acts as a manual for the compute node, which reads the file and executes the commands sequentially, line by line. The first line (`#!/bin/bash`) instructs the system to run it using the Bash shell. The second and third lines print a custom message and the system's hostname. Finally, the script executes `Example_python.py`, which generates random numbers, creates a plot, and saves it as a `plot.png` file.
 
--   The Python script requires some packages to run successfully. These are `matplotlib` and `numpy`. Install them using command: 
+-   To run successfully, the Python script requires the `matplotlib` and `numpy` packages. Install them using this command:
 
     !!! terminal "code"
         ```bash
@@ -65,18 +64,18 @@ To submit the job to the compute node with the SLURM scheduler, the code to be r
 
 ## Submitting jobs using SLURM and default module
 
-The software installed on the HPC and available through the `module` package manager may run much faster than software installed using `mamba`. Jobs will use fewer resources and run more efficiently. Therefore, if a package available on the HPC meets the user's needs, it is recommended to use the packages already available on the HPC.
+Software available through the HPC module system often runs significantly faster and more efficiently than software installed via `mamba`. Utilising these native modules helps jobs consume fewer cluster resources. Therefore, if a pre-installed package meets your needs, it is highly recommended to use it.
 
 Once connected to the IBME cluster, submit the job using the default modules:
 
--   make a directory, `cd` into the directory. Output of the jobs submitted through SLURM are saved in the directory where the jobs is submitted from. Therefore, it is recommended to create a directory per project and sub-directories to store the job output everytime a job is submitted. 
+-   Make a directory and `cd` into it. Because SLURM saves job output in the directory from which the jobs are submitted, it is recommended to create a dedicated directory for each project, along with specific subdirectories to organize the output of each job.
 
     !!! terminal "code"
         ```bash
         $ mkdir Example_job
         $ cd Example_job
         ```
--   download a shell script file using command
+-   Download the shell script file using the following command:
 
     !!! terminal "code"
         ```bash
@@ -97,7 +96,7 @@ Once connected to the IBME cluster, submit the job using the default modules:
         echo "GPU in this node are:"
         nvidia-smi
         ```
-    The second line of the script loads an HPC package using the module command, and the third line prints the package version. It is necessary to load the module at the beginning if it will be used later in this script or in any other scripts invoked by it. The script then prints a message on the third line, followed by the hostname on the fourth line. The fifth line prints another message, and the final line displays information about the NVIDIA GPUs.
+    The second line of the script loads an HPC package using the `module` command, and the third line outputs its version. It is necessary to load the module at the beginning if it will be used later in this script or in any other scripts invoked by it. The script then prints a message on the fourth line, the hostname on the fifth, another message on the sixth, and finally displays information about the NVIDIA GPUs.
 
 -   Once the steps above have been followed, the job can be submitted using the following command:
 
@@ -109,7 +108,7 @@ Once connected to the IBME cluster, submit the job using the default modules:
 
 ## The job Output
 
-The job output is not printed in the terminal, instead it is saved in a file called `slurm-JOBID.out` in a directory where we submitted the job from. The `JOBID` in the file name is an unique ID assigned by SLURM to every job. The ouput of the can be investigated using command `less` or `cat`. In the example below, we have used the `less` commnd which opens the page in a interactive mode on the screen. In the example below we have shown the job output of SLURM with mamba, if you have followed the example above you should see:
+Instead of printing to the terminal, SLURM saves job output to a file named `slurm-JOBID.out` in the submission directory. The `JOBID` in the file name is a unique ID assigned by SLURM to every job. The output can be investigated using command `less` or `cat`. The example below uses the `less` command, which opens the file in an interactive viewer. If you followed the previous Mamba environment example, your output should look like this:
 
 !!! terminal "code"
     ```bash
@@ -120,31 +119,31 @@ The job output is not printed in the terminal, instead it is saved in a file cal
     This job is running on:
     node04
     ```
-    it can be node05 depending on the availability of the node. 
+    It can be node05 depending on the availability of the nodes. 
 
-The job also outputs a plot called `plot.png` file, this is also stored in the directory where the job is submitted from. The HPC systems are remote machines which don't have a graphical user interface. It is recomemded to transfer this file to the local computer using FileZZile or rsync command, see [chapter 2](http://127.0.0.1:8000/IBME_Cluster2_Transferring_files_to_remote_machine/) for more details.
+The job also generates a plot named plot.png, which is stored in the directory from which the job was submitted. Because HPC systems are remote machines without a graphical user interface (GUI), you cannot view this image directly on the cluster. It is recommended to transfer the file to your local computer using FileZilla or the rsync command; see [Chapter 2](http://127.0.0.1:8000/IBME_Cluster2_Transferring_files_to_remote_machine/) for more details.
 
 ## The job Option configaration
 
-SLURM jobs can be configured to run with several specific options. These options can be specified at the top of the shell script with `#SBATCH` keyword followed by the option name and its value. The option names can either be as a short or long format. The table below highlights some of the common options:
+SLURM jobs can be configured to run with several specific options. These options can be specified at the top of the shell script using the `#SBATCH` keyword, followed by the option name and its value. The option names can either be as a short or long format. The table below highlights some of the common options:
 
 <div style="display: flex; justify-content: center;" markdown="1">
 
 | **Short**                                         | **Long** | **Description** |
 |:---------------------------------------------------|:-------------| :-------------|
-|-D |  --chdir | Working directory for the job, if not specified jobs will be submitted from the corrent working directory |
-|-o |  --output| Location where the output will be saved - needs specifyinh only if the output need to be saved somewhere else) |
-|-A | --account| Billing account |
-|-p | --partition| partition - currently the IBME cluster has onle one partition called standared |
-|-c | --cpus-per-task| number of cpus needed for the job |
-|-t | --time| Runtime limit |
+|-D |  --chdir | Working directory for the job. if not specified jobs will be submitted from the current working directory |
+|-o |  --output| File path for saving job output (only required if saving to a non-default location) |
+|-A | --account| Billing account name |
+|-p | --partition| Partition name (currently the IBME cluster has only one partition called standard) |
+|-c | --cpus-per-task| Number of CPUs requested per task |
+|-t | --time| Maximum runtime limit |
 |-J | --job-name| Job name |
-|  | --gpus| number of gpus needed for the job - maximum limit for IBME cluster is 1 |
-|  | --mem| RAM required for the job |
+|  | --gpus| Number of GPUs requested for the job (maximum limit for IBME cluster is 1) |
+|  | --mem| Amount of RAM required for the job |
 
 </div>
 
-For example to request a 2 cpus, 1 gpu, 4GB of memory and 10 minutes of runtime, the following `#SBATCH` notion can be used before any command to be run in the cluster
+For example, to request 2 CPUs, 1 GPU, 4 GB of RAM, and a 10-minute runtime limit, add these #SBATCH directives to the top of your script before any commands:
 
 !!! terminal "code"
     ```bash
@@ -166,30 +165,29 @@ For example to request a 2 cpus, 1 gpu, 4GB of memory and 10 minutes of runtime,
     ```
 
 
-
-SLURM automatically creates some environmental variables of the options specified through `#SBATCH`. For instance `$SLURM_CPUS_PER_TASK` and `$SLURM_MEM_PER_NODE` variable stores the number of cpu and memory requested. If the shell script above is submitted it will output, the nodename andthe cpu and memory requested. The IBME cluster doesn't automatically export the number of gpu and time into environment variable. To confirm whether this resources were allocated `scontrol` command can be used. The `scontrol` command only works for running or recently queued jobs.
+SLURM automatically creates several environment variables based on the options specified via `#SBATCH`. For instance, the `$SLURM_CPUS_PER_TASK` and `$SLURM_MEM_PER_NODE` variables store the number of requested CPUs and the allocated memory. If the example shell script above is submitted, it will output the node name along with these requested CPU and memory values. Note that the IBME cluster does not automatically export the number of GPUs or the time limit into environment variables. To confirm whether these specific resources were successfully allocated, you can use the `scontrol` command. The `scontrol` command only works for running or recently queued jobs.
 
 !!! terminal "code"
     ```bash
     $ scontrol show job ID 
     
-    shows a lot of information specific to the job. To filter and see information specific to gpu the following command can be used
+    This command displays a significant amount of job-specific information. To filter and view information specific to gpu the following command can be used
 
     $ scontrol show job ID | grep -i gres
 
-    To filter and see information specific to time the following command can be used
+    To filter the output and view details specific to the runtime, you can use the following command:
 
-    scontrol show job ID | grep -i TimeLimit
+    $ scontrol show job ID | grep -i TimeLimit
 
     ```
 
-The `sacct` command provides a lot of useful information abouth the job that has completed. However this command is not supported in the IBME cluster. 
+The `sacct` command provides useful information about completed jobs. However, this command is not supported on the IBME cluster.
 
 
 
 ## Interactive Sessions
 
-The IBME cluster also allows tO run interactive sessions. The `srun` command can be used to allocate the specific recourses and starts an interactive shell on the compute node based on the resources. To start an interactive session on the IBME cluster, the following command can be used:
+The IBME cluster also allows users to run interactive sessions. The `srun` command can be used to allocate the specific resources and start an interactive shell on the compute node based on the resources. To start an interactive session on the IBME cluster, the following command can be used:
 
 
 !!! terminal "code"
@@ -197,33 +195,33 @@ The IBME cluster also allows tO run interactive sessions. The `srun` command can
     $ srun --pty bash
     ```
 
-    The `--pty bash` command provides and interactive shell
+    The `--pty bash` command provides an interactive shell
     
-    once the session starts the host of terminal prompt will change to show the name of the compute node
+    Once the session starts, the hostname in your terminal prompt will change to show the name of the compute node.
 
     ```bash
-    $ `[<userid>@node05 ~]$`
+    [<userid>@node05 ~]$
     ```
 
 
-In the example above an interactive session starts but doesn't request any specific memory. By default only 2 cpus and a runtime of 4 days are attached to the session. To request specific resources in terms of cpu, gpu, memory and runtime the following command can be used:
+The example above launches an interactive session without specifying memory requirements. By default, SLURM allocates only 2 CPUs and a 4-day runtime limit. To request custom CPU, GPU, memory, or runtime configurations, use the following command:
 
 !!! terminal "code"
     ```bash
     $ srun --gpus=1 --cpus-per-task=4 --mem=4G --time=4:00:00 --pty bash
     ```
 
-   - `--gpus` options request gpus (1 in this case)
-   - `--cpus-per-task` options request cpus (4 in this case)
+   - `--gpus` options request GPUs (1 in this case)
+   - `--cpus-per-task` options request CPUs (4 in this case)
    - `--mem` options request RAM (4GB in this case)
-   - `--time` options request time limit for th session (4 hours in this case)
+   - `--time` options request time limit for the session (4 hours in this case)
 
-One in the interactive session run `echo $SLURM_JOB_ID` to see the Job ID associated with the session. To see information about the resources and other information regarding the session use command:
+Once inside the interactive session, run echo $SLURM_JOB_ID to see the Job ID assigned to it. To view resource allocations and other details regarding the session, use the following command:
 
 !!! terminal "code"
     ```bash
     $ scontrol show job ID
     ```
-    Filter and search for cpu, gpu, memory and timelimit for the session.
+    Filter and search for cpu, gpu, memory and runtime for the session.
 
 
