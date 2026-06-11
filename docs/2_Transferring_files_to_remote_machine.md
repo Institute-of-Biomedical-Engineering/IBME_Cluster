@@ -2,7 +2,7 @@
 
 ## Archiving file
 
-The quickest way to transfer a large number of files is to archive the files into one file before transferring it over the network. This reduces the overhads of transferring individual files. In Linux and macOS *Tape Archive* knows as `tar` is used as combine multiple files and folder into a single file. The `tar` is often combined with compression tool such as `gzip`, which has `.gz` file extension. For example, to compress a directory *data* which have multiple subdirectories and files within the subdirectories in to a single file (compressed_data.tar.gz), the following command can be used:
+The quickest way to transfer a large number of files is to archive them into a single file before moving them over the network. This drastically reduces the overhead of transferring individual files. In Linux and macOS, the Tape Archive utility—known as `tar` is used to combine multiple files and folders into a single archive file. `tar` is often paired with a compression tool such as `gzip`, which uses the `.gz` file extension. For example, to compress a directory named `data` (along with all of its internal subdirectories and files) into a single archive named `compressed_data.tar.gz`, you can use the following command:
 
 !!! terminal "code"
     ```bash
@@ -31,24 +31,24 @@ Compare the reduction in size with the `du` command.
 ## Transferring files
 
 
-For Linux and macOS systems, the `rsync` command can be used to transfer files and directory to remote servers. For instance, to transfer the file *compressed_data.tar.gz* to a `user` home directory of the IBME CLuster, the following command can be used:
+For Linux and macOS systems, the `rsync` command can be used to transfer files and directories to remote servers. For instance, to transfer the file `compressed_data.tar.gz` to user's home directory of the IBME cLuster, the following command can be used:
 
 !!! terminal "code"
     ```bash
     $ rsync -avP compressed_data.tar.gz  <userid>@engs-ibmecluster01.eng.ox.ac.uk:~/
     ```
 
-    - *compressed_data.tar.gz* is the file to be transferred
+    - `compressed_data.tar.gz` is the file to be transferred
 
-    - Remove the `<userid>` placeholder with username assigned for the HPC
+    - Replace the `<userid>` placeholder with username assigned for the IBME cluster
 
-    - *engs-ibmecluster01.eng.ox.ac.uk* is the host name of the IBME cluster
+    - `engs-ibmecluster01.eng.ox.ac.uk` is the host name of the IBME cluster
 
-    - Anything after the `:` is the path where the file is going to be copied in the cluster 
+    - Anything following the colon (`:`) specifies the destination path where the file will be copied on the cluster (in this case, `~/` represents your home directory).
 
-After running the above command the, the IBME login nodes prompts the user for a password specific to the <userid>. upon entering the password and pressing the enter key, the file is successfully transferred to the destination. Similar command can also be used to transfer a directory and its content to the cluster. The files or directory can also be transferred to scratch storage (low latency fast storage) located in `/data/<userid>`.
+After running the above command, the IBME login node prompts the user for a password specific to the <userid>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in `/data/<userid>`.
 
-For wondows user, it is recomended to install the [**Windows Subsystem for Linux (WSL)**](https://github.com/microsoft/WSL) to use `rsync`. After successfully installing WSL, the windows drives are automatecally mounted in `/mnt` directory located in root. Navigate to the directory containing the file to be transferred and use the command above to transfer the file or provide the exact path of the file in the command above.
+For Windows users, it is highly recommended to install the [**Windows Subsystem for Linux (WSL)**](https://github.com/microsoft/WSL) to use `rsync`. After successfully installing WSL, your local Windows drives are automatically mounted in the `/mnt` directory. From the WSL terminal, you can navigate directly to the folder containing your files or simply provide the exact path to the file in your `rsync` command.
 
 
 !!! terminal "code"
@@ -59,7 +59,7 @@ For wondows user, it is recomended to install the [**Windows Subsystem for Linux
   
 ## Transferring files with FileZilla
 
-FileZilla is free file transfer software. It can be used to upload and download data from a remote server. To use the software, the [**FileZilla Client**](https://filezilla-project.org) can be downloaded and installed on a local computer. Once installed, FileZilla is available from the Windows Search pane and can be launched. The image below shows the graphical user interface of the software.
+FileZilla is a free file transfer software. It can be used to upload and download data from a remote server. To use the software, the [**FileZilla Client**](https://filezilla-project.org) can be downloaded and installed on a local computer. Once installed, FileZilla is available from the Windows Search pane and can be launched. The image below shows the graphical user interface of the software.
 
 <p align="center">
     <img src="../images/filezila.png" width="720">
@@ -67,11 +67,11 @@ FileZilla is free file transfer software. It can be used to upload and download 
 
 The software has two file browser windows: one for the local computer on the left and one for the remote server on the right. Initially, the remote server file browser remains empty until a connection to the server is established.
 
-To connect to the remote machine, in this case the IBME cluster. The follwing information should be provided:
+To connect to the remote machine (in this case the IBME cluster), enter the following information in the Quickconnect bar at the top:
 
 - Host: *sftp://engs-ibmecluster01.eng.ox.ac.uk* (the host is *engs-ibmecluster01.eng.ox.ac.uk* and the *sftp* is the protocol)
 - Username: `<userid>` (Username in the host machine)
-- Password: The passowrd associated with the `<userid>`
-- Post: This can be left black
+- Password: The password associated with the `<userid>`
+- Port: This can be left blank
 
-After entering the connection details, click **Quickconnect**. If the connection is successful, the remote server file browser will appear on the right. Navigate to the required location by selecting folders in the file browser or by entering the directory path in the address bar. For the remote server entering the directory path directly is often more convenient.Files can then be transferred by dragging and dropping them between the left and right panels.
+After entering the connection details, click **Quickconnect**. If the connection is successful, the remote server file browser will appear on the right. Navigate to the required location by selecting folders in the file browser or by entering the directory path in the address bar. For the remote server, entering the directory path directly is often more convenient. Files can then be transferred by dragging and dropping them between the left and right panels.
