@@ -338,10 +338,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#archiving-file" class="md-nav__link">
+  <a href="#archiving-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Archiving file
+        Archiving files
       
     </span>
   </a>
@@ -486,10 +486,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#archiving-file" class="md-nav__link">
+  <a href="#archiving-files" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Archiving file
+        Archiving files
       
     </span>
   </a>
@@ -539,7 +539,7 @@
 
 
 <h1 id="2-transferring-data-to-the-cluster">2. Transferring data to the cluster</h1>
-<h2 id="archiving-file">Archiving file</h2>
+<h2 id="archiving-files">Archiving files</h2>
 <p>The quickest way to transfer a large number of files is to archive them into a single file before moving them over the network. This drastically reduces the overhead of transferring individual files. In Linux and macOS, the Tape Archive utility—known as <code>tar</code> is used to combine multiple files and folders into a single archive file. <code>tar</code> is often paired with a compression tool such as <code>gzip</code>, which uses the <code>.gz</code> file extension. For example, to compress a directory named <code>data</code> (along with all of its internal subdirectories and files) into a single archive named <code>compressed_data.tar.gz</code>, you can use the following command:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
@@ -580,7 +580,7 @@ The compressed file has a size of 48M</p>
 </li>
 </ul>
 </div>
-<p>After running the above command, the IBME login node prompts the user for a password specific to the <userid>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in the <code>/data/&lt;userid&gt;</code> directory.</p>
+<p>After running the above command, the IBME login node prompts the user for a password specific to the <code>&lt;userid&gt;</code>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in the <code>/data/&lt;userid&gt;</code> directory.</p>
 <p>For Windows users, it is highly recommended to install the <a href="https://github.com/microsoft/WSL"><strong>Windows Subsystem for Linux (WSL)</strong></a> to use <code>rsync</code>. After successfully installing WSL, your local Windows drives are automatically mounted in the <code>/mnt</code> directory. From the WSL terminal, you can navigate directly to the folder containing your files or simply provide the exact path to the file in your <code>rsync</code> command.</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
@@ -590,7 +590,7 @@ The compressed file has a size of 48M</p>
 <h2 id="transferring-files-with-filezilla">Transferring files with FileZilla</h2>
 <p>FileZilla is a free file transfer software. It can be used to upload and download data from a remote server. To use the software, the <a href="https://filezilla-project.org"><strong>FileZilla Client</strong></a> can be downloaded and installed on a local computer. Once installed, FileZilla is available from the Windows Search pane and can be launched. The image below shows the graphical user interface of the software.</p>
 <p align="center">
-    <img src="../images/filezila.png" width="720">
+    <img src="../images/filezilla.png" width="720">
 </p>
 
 <p>The software has two file browser windows: one for the local computer on the left and one for the remote server on the right. Initially, the remote server file browser remains empty until a connection to the server is established.</p>
