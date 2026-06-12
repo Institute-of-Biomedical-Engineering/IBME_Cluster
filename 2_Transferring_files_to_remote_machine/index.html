@@ -419,7 +419,7 @@
   <span class="md-ellipsis">
     
   
-    4. Moduels in the cluster
+    4. Modules in the cluster
   
 
     
@@ -553,14 +553,14 @@
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>du<span class="w"> </span>-sh<span class="w"> </span>data
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>146M<span class="w">    </span>data
 </span></code></pre></div>
-The output shows the data directory have a size of 146M</p>
+The output shows the data directory has a size of 146M</p>
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>du<span class="w"> </span>-sh<span class="w"> </span>compressed_data.tar.gz
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>48M<span class="w">    </span>data
 </span></code></pre></div>
-The compressed file have a size of 48M</p>
+The compressed file has a size of 48M</p>
 </div>
 <h2 id="transferring-files">Transferring files</h2>
-<p>For Linux and macOS systems, the <code>rsync</code> command can be used to transfer files and directories to remote servers. For instance, to transfer the file <code>compressed_data.tar.gz</code> to user's home directory of the IBME cLuster, the following command can be used:</p>
+<p>For Linux and macOS systems, the <code>rsync</code> command can be used to transfer files and directories to remote servers. For instance, to transfer the file <code>compressed_data.tar.gz</code> to user's home directory on the IBME cluster, the following command can be used:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>rsync<span class="w"> </span>-avP<span class="w"> </span>compressed_data.tar.gz<span class="w">  </span>&lt;userid&gt;@engs-ibmecluster01.eng.ox.ac.uk:~/
@@ -570,7 +570,7 @@ The compressed file have a size of 48M</p>
 <p><code>compressed_data.tar.gz</code> is the file to be transferred</p>
 </li>
 <li>
-<p>Replace the <code>&lt;userid&gt;</code> placeholder with username assigned for the IBME cluster</p>
+<p>Replace the <code>&lt;userid&gt;</code> placeholder with the username assigned for the IBME cluster</p>
 </li>
 <li>
 <p><code>engs-ibmecluster01.eng.ox.ac.uk</code> is the host name of the IBME cluster</p>
@@ -580,7 +580,7 @@ The compressed file have a size of 48M</p>
 </li>
 </ul>
 </div>
-<p>After running the above command, the IBME login node prompts the user for a password specific to the <userid>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in <code>/data/&lt;userid&gt;</code>.</p>
+<p>After running the above command, the IBME login node prompts the user for a password specific to the <userid>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in the <code>/data/&lt;userid&gt;</code> directory.</p>
 <p>For Windows users, it is highly recommended to install the <a href="https://github.com/microsoft/WSL"><strong>Windows Subsystem for Linux (WSL)</strong></a> to use <code>rsync</code>. After successfully installing WSL, your local Windows drives are automatically mounted in the <code>/mnt</code> directory. From the WSL terminal, you can navigate directly to the folder containing your files or simply provide the exact path to the file in your <code>rsync</code> command.</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
@@ -594,14 +594,14 @@ The compressed file have a size of 48M</p>
 </p>
 
 <p>The software has two file browser windows: one for the local computer on the left and one for the remote server on the right. Initially, the remote server file browser remains empty until a connection to the server is established.</p>
-<p>To connect to the remote machine (in this case the IBME cluster), enter the following information in the Quickconnect bar at the top:</p>
+<p>To connect to the remote machine (in this case the IBME cluster), enter the following details in the Quickconnect bar at the top:</p>
 <ul>
 <li>Host: <em>sftp://engs-ibmecluster01.eng.ox.ac.uk</em> (the host is <em>engs-ibmecluster01.eng.ox.ac.uk</em> and the <em>sftp</em> is the protocol)</li>
-<li>Username: <code>&lt;userid&gt;</code> (Username in the host machine)</li>
+<li>Username: <code>&lt;userid&gt;</code> (Username on the host machine)</li>
 <li>Password: The password associated with the <code>&lt;userid&gt;</code></li>
 <li>Port: This can be left blank</li>
 </ul>
-<p>After entering the connection details, click <strong>Quickconnect</strong>. If the connection is successful, the remote server file browser will appear on the right. Navigate to the required location by selecting folders in the file browser or by entering the directory path in the address bar. For the remote server, entering the directory path directly is often more convenient. Files can then be transferred by dragging and dropping them between the left and right panels.</p>
+<p>After entering the connection details, click <strong>Quickconnect</strong>. If the connection is successful, the remote server file browser will appear on the right. Navigate to the required location by selecting folders in the file browser or entering the directory path in the address bar. For the remote server, entering the directory path directly is often more convenient. Files can then be transferred by dragging and dropping them between the left and right panels.</p>
 
 
 

@@ -27,7 +27,7 @@
     
     
       
-        <title>4. Moduels in the cluster - IBME HPC Cluster</title>
+        <title>4. Modules in the cluster - IBME HPC Cluster</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4-moduels-in-the-cluster" class="md-skip">
+        <a href="#4-modules-in-the-cluster" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4. Moduels in the cluster
+              4. Modules in the cluster
             
           </span>
         </div>
@@ -348,7 +348,7 @@
   <span class="md-ellipsis">
     
   
-    4. Moduels in the cluster
+    4. Modules in the cluster
   
 
     
@@ -366,7 +366,7 @@
   <span class="md-ellipsis">
     
   
-    4. Moduels in the cluster
+    4. Modules in the cluster
   
 
     
@@ -560,7 +560,7 @@
   
 
 
-<h1 id="4-moduels-in-the-cluster">4. Moduels in the cluster</h1>
+<h1 id="4-modules-in-the-cluster">4. Modules in the cluster</h1>
 <h2 id="pre-installed-software">Pre-installed software</h2>
 <p>Several software/module packages are pre-installed on the IBME cluster and are available to users. The GPU module stack available on the IBME cluster is listed below:</p>
 <table>
@@ -614,7 +614,7 @@
 <p>Log in to the IBME cluster - <code>ssh &lt;userid&gt;@engs-ibmecluster01.eng.ox.ac.uk</code>.</p>
 </li>
 <li>
-<p>In the log in node make a shell variable <code>dir="/users/&lt;userid&gt;/miniforge3"</code>.</p>
+<p>In the login node make a shell variable <code>dir="/users/&lt;userid&gt;/miniforge3"</code>.</p>
 </li>
 <li>
 <p>Download the installer using <code>wget</code>. More information about the installer is available on the official GitHub <a href="https://github.com/conda-forge/miniforge/"><strong>repository</strong></a> repository.</p>
@@ -669,9 +669,9 @@ Once the installer has been downloaded, it will be saved in the current director
 </span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span>-<span class="w"> </span>bioconda
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span>-<span class="w"> </span>nodefaults
 </span></code></pre></div>
-<p>nodefaults: means do not use the official Anaconda defaults channel
-conda-forge: largest community-maintained channel
-bioconda: Specialised channel for bioinformatics</p>
+<p>nodefaults means do not use the official Anaconda defaults channel
+conda-forge is the largest community-maintained channel
+bioconda is a specialised channel for bioinformatics</p>
 </div>
 <h2 id="installing-software-on-the-ibme-cluster">Installing software on the IBME cluster</h2>
 <p>To install software on the IBME cluster using Mamba, first create and activate a software environment (for example, ImageAnalysis) using the following command:</p>
@@ -695,7 +695,7 @@ Activate environment</p>
 <p>The mamba environment can be deactivated using command:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>mamba<span class="w"> </span>deactivate<span class="w"> </span>ImageAnalysis
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>mamba<span class="w"> </span>deactivate
 </span></code></pre></div>
 </div>
 <div class="admonition info">
