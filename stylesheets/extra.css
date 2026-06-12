@@ -51,3 +51,6 @@
   opacity: 0.9;
 }
 
+.md-footer {
+    display: none;
+}
