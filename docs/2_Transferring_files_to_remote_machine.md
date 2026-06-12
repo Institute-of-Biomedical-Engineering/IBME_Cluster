@@ -62,7 +62,7 @@ For Windows users, it is highly recommended to install the [**Windows Subsystem 
 FileZilla is a free file transfer software. It can be used to upload and download data from a remote server. To use the software, the [**FileZilla Client**](https://filezilla-project.org) can be downloaded and installed on a local computer. Once installed, FileZilla is available from the Windows Search pane and can be launched. The image below shows the graphical user interface of the software.
 
 <p align="center">
-    <img src="../images/filezilla.png" width="720">
+    <img src="../images/filezila.png" width="720">
 </p>
 
 The software has two file browser windows: one for the local computer on the left and one for the remote server on the right. Initially, the remote server file browser remains empty until a connection to the server is established.
