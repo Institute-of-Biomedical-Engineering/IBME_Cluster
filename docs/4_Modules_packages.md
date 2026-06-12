@@ -41,7 +41,7 @@ Before you can use Mamba on the IBME cluster, it must be installed (note that Ma
 - In the login node make a shell variable `dir="/users/<userid>/miniforge3"`.
 
 
-- Download the installer using `wget`. More information about the installer is available on the official GitHub [**repository**](https://github.com/conda-forge/miniforge/) repository.
+- Download the installer using `wget`. More information about the installer is available on the official GitHub [**repository**](https://github.com/conda-forge/miniforge/).
 
 !!! terminal "code"
     ```bash
@@ -116,9 +116,9 @@ Once the environment is activated, its name will appear in parentheses at the st
 
 We will not specify a fixed version during installation. As a result, Mamba will install the latest available package that is compatible with the IBME cluster environment. In this case, that was `CUDA 12.6.3`. While this is not the most recent CUDA release available, it is significantly newer than the default CUDA version installed on the IBME cluster.
 
-The command above also installs a number of additional CUDA-related packages that are not available in the versions pre-installed on the IBME cluster. These include key development tools such as the `nvcc` and `gcc` compilers
+The command above also installs a number of additional CUDA-related packages that are not available in the versions pre-installed on the IBME cluster. These include key development tools such as the `nvcc` and `gcc` compilers.
 
-The mamba environment can be deactivated using command:
+The mamba environment can be deactivated using the command:
 
 !!! terminal "code"
     ```bash

@@ -1,6 +1,6 @@
 # 2. Transferring data to the cluster
 
-## Archiving file
+## Archiving files
 
 The quickest way to transfer a large number of files is to archive them into a single file before moving them over the network. This drastically reduces the overhead of transferring individual files. In Linux and macOS, the Tape Archive utility—known as `tar` is used to combine multiple files and folders into a single archive file. `tar` is often paired with a compression tool such as `gzip`, which uses the `.gz` file extension. For example, to compress a directory named `data` (along with all of its internal subdirectories and files) into a single archive named `compressed_data.tar.gz`, you can use the following command:
 
@@ -46,7 +46,7 @@ For Linux and macOS systems, the `rsync` command can be used to transfer files a
 
     - Anything following the colon (`:`) specifies the destination path where the file will be copied on the cluster (in this case, `~/` represents your home directory).
 
-After running the above command, the IBME login node prompts the user for a password specific to the <userid>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in the `/data/<userid>` directory.
+After running the above command, the IBME login node prompts the user for a password specific to the `<userid>`. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in the `/data/<userid>` directory.
 
 For Windows users, it is highly recommended to install the [**Windows Subsystem for Linux (WSL)**](https://github.com/microsoft/WSL) to use `rsync`. After successfully installing WSL, your local Windows drives are automatically mounted in the `/mnt` directory. From the WSL terminal, you can navigate directly to the folder containing your files or simply provide the exact path to the file in your `rsync` command.
 
@@ -62,7 +62,7 @@ For Windows users, it is highly recommended to install the [**Windows Subsystem 
 FileZilla is a free file transfer software. It can be used to upload and download data from a remote server. To use the software, the [**FileZilla Client**](https://filezilla-project.org) can be downloaded and installed on a local computer. Once installed, FileZilla is available from the Windows Search pane and can be launched. The image below shows the graphical user interface of the software.
 
 <p align="center">
-    <img src="../images/filezila.png" width="720">
+    <img src="../images/filezilla.png" width="720">
 </p>
 
 The software has two file browser windows: one for the local computer on the left and one for the remote server on the right. Initially, the remote server file browser remains empty until a connection to the server is established.

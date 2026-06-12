@@ -169,15 +169,15 @@ SLURM automatically creates several environment variables based on the options s
 
 !!! terminal "code"
     ```bash
-    $ scontrol show job ID 
+    $ scontrol show <JOBID> 
     
-    This command displays a significant amount of job-specific information. To filter and view information specific to GPU the following command can be used
+    This command displays a significant amount of job-specific information. To filter and view information specific to GPU, the following command can be used
 
-    $ scontrol show job ID | grep -i gres
+    $ scontrol show <JOBID> | grep -i gres
 
     To filter the output and view details specific to the time limit, you can use the following command:
 
-    $ scontrol show job ID | grep -i TimeLimit
+    $ scontrol show <JOBID> | grep -i TimeLimit
 
     ```
 
@@ -187,7 +187,7 @@ The `sacct` command provides useful information about completed jobs. However, t
 
 ## Interactive sessions
 
-The IBME cluster also allows users to run interactive sessions. The `srun` command can be used to allocate the specific resources and start an interactive shell on the compute node based on the resources. To start an interactive session on the IBME cluster, the following command can be used:
+The IBME cluster also allows users to run interactive sessions. The `srun` command can be used to allocate the specific resources and start an interactive shell on the compute node based on the resources requested. To start an interactive session on the IBME cluster, the following command can be used:
 
 
 !!! terminal "code"
@@ -220,7 +220,7 @@ Once inside the interactive session, run echo $SLURM_JOB_ID to see the Job ID as
 
 !!! terminal "code"
     ```bash
-    $ scontrol show job ID
+    $ scontrol show <JOBID>
     ```
     Filter and search for cpu, gpu, memory and time limit for the session.
 
