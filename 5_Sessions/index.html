@@ -453,7 +453,7 @@
   <a href="#the-job-output" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The job Output
+        The job output
       
     </span>
   </a>
@@ -464,7 +464,7 @@
   <a href="#the-job-option-configaration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The job Option configaration
+        The job option configaration
       
     </span>
   </a>
@@ -475,7 +475,7 @@
   <a href="#interactive-sessions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interactive Sessions
+        Interactive sessions
       
     </span>
   </a>
@@ -553,7 +553,7 @@
   <a href="#the-job-output" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The job Output
+        The job output
       
     </span>
   </a>
@@ -564,7 +564,7 @@
   <a href="#the-job-option-configaration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The job Option configaration
+        The job option configaration
       
     </span>
   </a>
@@ -575,7 +575,7 @@
   <a href="#interactive-sessions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interactive Sessions
+        Interactive sessions
       
     </span>
   </a>
@@ -711,7 +711,7 @@
 </div>
 </li>
 </ul>
-<h2 id="the-job-output">The job Output</h2>
+<h2 id="the-job-output">The job output</h2>
 <p>Instead of printing to the terminal, SLURM saves job output to a file named <code>slurm-JOBID.out</code> in the submission directory. The <code>JOBID</code> in the file name is a unique ID assigned by SLURM to every job. The output can be investigated using command <code>less</code> or <code>cat</code>. The example below uses the <code>less</code> command, which opens the file in an interactive viewer. If you followed the previous Mamba environment example, your output should look like this:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
@@ -722,8 +722,8 @@
 </span></code></pre></div>
 It can be node05 depending on the availability of the nodes. </p>
 </div>
-<p>The job also generates a plot named plot.png, which is stored in the directory from which the job was submitted. Because HPC systems are remote machines without a graphical user interface (GUI), you cannot view this image directly on the cluster. It is recommended to transfer the file to your local computer using FileZilla or the rsync command; see <a href="http://127.0.0.1:8000/IBME_Cluster2_Transferring_files_to_remote_machine/">Chapter 2</a> for more details.</p>
-<h2 id="the-job-option-configaration">The job Option configaration</h2>
+<p>The job also generates a plot named plot.png, which is stored in the directory from which the job was submitted. Because HPC systems are remote machines without a graphical user interface (GUI), you cannot view this image directly on the cluster. It is recommended to transfer the file to your local computer using FileZilla or the rsync command; see <a href="https://institute-of-biomedical-engineering.github.io/IBME_Cluster/2_Transferring_files_to_remote_machine/">topic 2</a> for more details.</p>
+<h2 id="the-job-option-configaration">The job option configaration</h2>
 <p>SLURM jobs can be configured to run with several specific options. These options can be specified at the top of the shell script using the <code>#SBATCH</code> keyword, followed by the option name and its value. The option names can either be as a short or long format. The table below highlights some of the common options:</p>
 <div style="display: flex; justify-content: center;">
 <table>
@@ -817,7 +817,7 @@ It can be node05 depending on the availability of the nodes. </p>
 </span></code></pre></div>
 </div>
 <p>The <code>sacct</code> command provides useful information about completed jobs. However, this command is not supported on the IBME cluster.</p>
-<h2 id="interactive-sessions">Interactive Sessions</h2>
+<h2 id="interactive-sessions">Interactive sessions</h2>
 <p>The IBME cluster also allows users to run interactive sessions. The <code>srun</code> command can be used to allocate the specific resources and start an interactive shell on the compute node based on the resources. To start an interactive session on the IBME cluster, the following command can be used:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
