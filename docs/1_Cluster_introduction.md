@@ -1,4 +1,4 @@
-# 1. IBME Cluster introduction
+# 1. IBME cluster introduction
 
 ## Accessing the cluster
 
@@ -15,7 +15,7 @@ The IBME cluster consists of several components connected via a high-speed netwo
     <img src="../images/IBME Cluster.png" width="720">
 </p>
 
-## Key Components
+## Key components
 
 The core components of the cluster include:
 
@@ -32,11 +32,11 @@ The core components of the cluster include:
 
 
 
-- **Head Node:** To submit jobs to the compute nodes, the user must first log in to the head node. The command to log in to the head node is `ssh headnode1`. Once logged in, the terminal prompt changes to `[<userid>@headnode1 ~]`.
+- **Head Node:** To submit jobs to the compute nodes, the user must first log in to the head node. The command to log in to the head node is `ssh headnode1`. Once logged in, the terminal prompt changes to `[<userid>@headnode1 ~]$`.
 
-    The head node in the IBME cluster runs CentOS Linux (based on Red Hat Enterprise Linux) and hosts the SLURM scheduler, which allows users to submit jobs to the compute nodes. Instructions on how to use SLURM in the IBME cluster are provided in the [Batch and interactive sessions](http://127.0.0.1:8000/IBME_Cluster/5_Sessions/).
+    The head node in the IBME cluster runs CentOS Linux (based on Red Hat Enterprise Linux) and hosts the SLURM scheduler, which allows users to submit jobs to the compute nodes. Instructions on how to use SLURM in the IBME cluster are provided in [topic 5](https://institute-of-biomedical-engineering.github.io/IBME_Cluster/5_Sessions/).
 
-    Pre-installed software on the IBME cluster is available from the head node. See the [Modules and packages](http://127.0.0.1:8000/IBME_Cluster/4_Modules_packages/) section for instructions on how to access or install software.
+    Pre-installed software on the IBME cluster is available from the head node. See [topic 4](https://institute-of-biomedical-engineering.github.io/IBME_Cluster/4_Modules_packages/) for instructions on how to access or install software.
 
     The file system on the login node is the same as that of the head node. As a result, files and data stored in `/users/<userid>` and `/data/<userid>` on the login node are also accessible from headnode1.
 

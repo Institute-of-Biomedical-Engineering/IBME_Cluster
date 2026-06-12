@@ -1,0 +1,936 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Institute of Biomedical Engineering, University of Oxford">
+      
+      
+        <link rel="canonical" href="https://mydomain.org/IBME_Cluster/5_Sessions/">
+      
+      
+        <link rel="prev" href="../4_Modules_packages/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>5. Running jobs in the IBME cluster - IBME HPC Cluster</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-running-jobs-in-the-ibme-cluster" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBME HPC Cluster" class="md-header__button md-logo" aria-label="IBME HPC Cluster" data-md-component="logo">
+      
+  <img src="../images/IBME_OU_logo.jpg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBME HPC Cluster
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Running jobs in the IBME cluster
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Institute-of-Biomedical-Engineering/IBME_Cluster" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Institute-of-Biomedical-Engineering/Training_Linux_CLI
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBME HPC Cluster" class="md-nav__button md-logo" aria-label="IBME HPC Cluster" data-md-component="logo">
+      
+  <img src="../images/IBME_OU_logo.jpg" alt="logo">
+
+    </a>
+    IBME HPC Cluster
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Institute-of-Biomedical-Engineering/IBME_Cluster" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Institute-of-Biomedical-Engineering/Training_Linux_CLI
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_Cluster_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. IBME cluster introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_Transferring_files_to_remote_machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Transferring data to the cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3_Editing_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Editing files on the cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4_Modules_packages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Modules in the cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Running jobs in the IBME cluster
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Running jobs in the IBME cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#batch-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batch Sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-jobs-using-slurm-and-mamba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submitting jobs using SLURM and Mamba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-jobs-using-slurm-and-default-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submitting jobs using SLURM and default module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-job-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The job output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-job-option-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The job option configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#batch-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Batch Sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-jobs-using-slurm-and-mamba" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submitting jobs using SLURM and Mamba
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-jobs-using-slurm-and-default-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submitting jobs using SLURM and default module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-job-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The job output
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-job-option-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The job option configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactive-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive sessions
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="5-running-jobs-in-the-ibme-cluster">5. Running jobs in the IBME cluster</h1>
+<h2 id="batch-sessions">Batch Sessions</h2>
+<p>In batch computing environments, jobs are submitted to compute nodes through the SLURM scheduler. SLURM ensures that the resources (GPUs, CPUs and memory) are efficiently utilised across the cluster. It evaluates each job based on factors including requested time limit, required resources, and current cluster availability, then assigns priorities to determine job scheduling order.</p>
+<h2 id="submitting-jobs-using-slurm-and-mamba">Submitting jobs using SLURM and Mamba</h2>
+<p>To submit a job to a compute node via the SLURM scheduler, your commands must be included in a shell script (a <code>.sh</code> file). We have created an example script to walk you through the submission process and its requirements. Once you are connected to the IBME cluster, run the following commands from the login node:</p>
+<ul>
+<li>
+<p>Create and activate a Mamba environment (alternatively, you can also create a Python virtual environment). This is to ensure we are in an isolated environment and that the packages we install do not interfere with our other work in the cluster. </p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>mamba<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>ImageAnalysis
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>$<span class="w"> </span>mamba<span class="w"> </span>activate<span class="w"> </span>ImageAnalysis
+</span></code></pre></div>
+</div>
+</li>
+<li>
+<p>Make a directory and <code>cd</code> into it. Because SLURM saves job output in the directory from which the jobs are submitted, it is recommended to create a dedicated directory for each project, along with specific subdirectories to organize the output of each job.</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>Example_job
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Example_job
+</span></code></pre></div>
+</div>
+</li>
+<li>
+<p>Download the shell and Python script files using the following commands:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>wget<span class="w"> </span>https://raw.githubusercontent.com/Institute-of-Biomedical-Engineering/IBME_Cluster/master/Example_script.sh
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>wget<span class="w"> </span>https://raw.githubusercontent.com/Institute-of-Biomedical-Engineering/IBME_Cluster/master/Example_python.py
+</span></code></pre></div>
+</div>
+<p>The <code>Example_script.sh</code> contains the following code:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">##!/bin/bash</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This job is running on:&quot;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>hostname
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>python3<span class="w"> </span>Example_python.py
+</span></code></pre></div>
+</div>
+<p>The shell script acts as a manual for the compute node, which reads the file and executes the commands sequentially, line by line. The first line (<code>#!/bin/bash</code>) instructs the system to run it using the Bash shell. The second and third lines print a custom message and the system's hostname. Finally, the script executes <code>Example_python.py</code>, which generates random numbers, creates a plot, and saves it as a <code>plot.png</code> file.</p>
+</li>
+<li>
+<p>To run successfully, the Python script requires the <code>matplotlib</code> and <code>numpy</code> packages. Install them using this command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>matplotlib<span class="p">;</span><span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>$<span class="w"> </span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>numpy
+</span></code></pre></div>
+</div>
+</li>
+<li>
+<p>Once the steps above have been followed, the job can be submitted using the following command: </p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>sbatch<span class="w"> </span>./Example_script.sh
+</span></code></pre></div>
+</div>
+</li>
+</ul>
+<h2 id="submitting-jobs-using-slurm-and-default-module">Submitting jobs using SLURM and default module</h2>
+<p>Software available through the HPC module system often runs significantly faster and more efficiently than software installed via <code>mamba</code>. Utilising these native modules helps jobs consume fewer cluster resources. Therefore, if a pre-installed package meets your needs, it is highly recommended to use it.</p>
+<p>Once connected to the IBME cluster, submit the job using the default modules:</p>
+<ul>
+<li>
+<p>Make a directory and <code>cd</code> into it. Because SLURM saves job output in the directory from which the jobs are submitted, it is recommended to create a dedicated directory for each project, along with specific subdirectories to organize the output of each job.</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>mkdir<span class="w"> </span>Example_job
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>Example_job
+</span></code></pre></div>
+</div>
+<ul>
+<li>Download the shell script file using the following command:</li>
+</ul>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$<span class="w"> </span>wget<span class="w"> </span>https://raw.githubusercontent.com/Institute-of-Biomedical-Engineering/IBME_Cluster/master/Example_default_script.sh
+</span></code></pre></div>
+</div>
+<p>The <code>Example_script.sh</code> contains the following code:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">##!/bin/bash</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>module<span class="w"> </span>load<span class="w"> </span>cuda
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>nvcc<span class="w"> </span>--version
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This job is running on node:&quot;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>hostname
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;GPUs in this node are:&quot;</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>nvidia-smi
+</span></code></pre></div>
+</div>
+<p>The second line of the script loads an HPC package using the <code>module</code> command, and the third line outputs its version. It is necessary to load the module at the beginning if it will be used later in this script or in any other scripts invoked by it. The script then prints a message on the fourth line, the hostname on the fifth, another message on the sixth, and finally displays information about the NVIDIA GPUs.</p>
+</li>
+<li>
+<p>Once the steps above have been followed, the job can be submitted using the following command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$<span class="w"> </span>sbatch<span class="w"> </span>./Example_default_script.sh
+</span></code></pre></div>
+</div>
+</li>
+</ul>
+<h2 id="the-job-output">The job output</h2>
+<p>Instead of printing to the terminal, SLURM saves job output to a file named <code>slurm-JOBID.out</code> in the submission directory. The <code>JOBID</code> in the file name is a unique ID assigned by SLURM to every job. The output can be investigated using command <code>less</code> or <code>cat</code>. The example below uses the <code>less</code> command, which opens the file in an interactive viewer. If you followed the previous Mamba environment example, your output should look like this:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>less<span class="w"> </span>slurm-JOBID.out<span class="w"> </span>
+</span></code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>This<span class="w"> </span>job<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>on:
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>node04
+</span></code></pre></div>
+It can be node05 depending on the availability of the nodes. </p>
+</div>
+<p>The job also generates a plot named plot.png, which is stored in the directory from which the job was submitted. Because HPC systems are remote machines without a graphical user interface (GUI), you cannot view this image directly on the cluster. It is recommended to transfer the file to your local computer using FileZilla or the rsync command; see <a href="https://institute-of-biomedical-engineering.github.io/IBME_Cluster/2_Transferring_files_to_remote_machine/">topic 2</a> for more details.</p>
+<h2 id="the-job-option-configuration">The job option configuration</h2>
+<p>SLURM jobs can be configured to run with several specific options. These options can be specified at the top of the shell script using the <code>#SBATCH</code> keyword, followed by the option name and its value. The option names can either be as a short or long format. The table below highlights some of the common options:</p>
+<div style="display: flex; justify-content: center;">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Short</strong></th>
+<th style="text-align: left;"><strong>Long</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">-D</td>
+<td style="text-align: left;">--chdir</td>
+<td style="text-align: left;">Working directory for the job. if not specified jobs will be submitted from the current working directory</td>
+</tr>
+<tr>
+<td style="text-align: left;">-o</td>
+<td style="text-align: left;">--output</td>
+<td style="text-align: left;">File path for saving job output (only required if saving to a non-default location)</td>
+</tr>
+<tr>
+<td style="text-align: left;">-A</td>
+<td style="text-align: left;">--account</td>
+<td style="text-align: left;">Billing account name</td>
+</tr>
+<tr>
+<td style="text-align: left;">-p</td>
+<td style="text-align: left;">--partition</td>
+<td style="text-align: left;">Partition name (currently the IBME cluster has only one partition called standard)</td>
+</tr>
+<tr>
+<td style="text-align: left;">-c</td>
+<td style="text-align: left;">--cpus-per-task</td>
+<td style="text-align: left;">Number of CPUs requested per task</td>
+</tr>
+<tr>
+<td style="text-align: left;">-t</td>
+<td style="text-align: left;">--time</td>
+<td style="text-align: left;">Maximum runtime limit</td>
+</tr>
+<tr>
+<td style="text-align: left;">-J</td>
+<td style="text-align: left;">--job-name</td>
+<td style="text-align: left;">Job name</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">--gpus</td>
+<td style="text-align: left;">Number of GPUs requested for the job (maximum limit for IBME cluster is 1)</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">--mem</td>
+<td style="text-align: left;">Amount of RAM required for the job</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, to request 2 CPUs, 1 GPU, 4 GB of RAM, and a 10-minute time limit, add these #SBATCH directives to the top of your script before any commands:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1">#SBATCH -c 4</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1">#SBATCH --gpus=1</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1">#SBATCH --mem=4G</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1">#SBATCH -t 00:10:00 # time for the job HH:MM:SS.</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This job is running on node:&quot;</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>hostname
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CPU requested:&quot;</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$SLURM_CPUS_PER_TASK</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Memory per node:&quot;</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$SLURM_MEM_PER_NODE</span>
+</span></code></pre></div>
+</div>
+<p>SLURM automatically creates several environment variables based on the options specified via <code>#SBATCH</code>. For instance, the <code>$SLURM_CPUS_PER_TASK</code> and <code>$SLURM_MEM_PER_NODE</code> variables store the number of requested CPUs and the allocated memory. If the example shell script above is submitted, it will output the node name along with these requested CPU and memory values. Note that the IBME cluster does not automatically export the number of GPUs or the time limit into environment variables. To confirm whether these specific resources were successfully allocated, you can use the <code>scontrol</code> command. The <code>scontrol</code> command only works for running or recently queued jobs.</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID<span class="w"> </span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>This<span class="w"> </span><span class="nb">command</span><span class="w"> </span>displays<span class="w"> </span>a<span class="w"> </span>significant<span class="w"> </span>amount<span class="w"> </span>of<span class="w"> </span>job-specific<span class="w"> </span>information.<span class="w"> </span>To<span class="w"> </span>filter<span class="w"> </span>and<span class="w"> </span>view<span class="w"> </span>information<span class="w"> </span>specific<span class="w"> </span>to<span class="w"> </span>GPU<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span><span class="nb">command</span><span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>gres
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>To<span class="w"> </span>filter<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>and<span class="w"> </span>view<span class="w"> </span>details<span class="w"> </span>specific<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="nb">time</span><span class="w"> </span>limit,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>command:
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>TimeLimit
+</span></code></pre></div>
+</div>
+<p>The <code>sacct</code> command provides useful information about completed jobs. However, this command is not supported on the IBME cluster.</p>
+<h2 id="interactive-sessions">Interactive sessions</h2>
+<p>The IBME cluster also allows users to run interactive sessions. The <code>srun</code> command can be used to allocate the specific resources and start an interactive shell on the compute node based on the resources. To start an interactive session on the IBME cluster, the following command can be used:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>bash
+</span></code></pre></div>
+<p>The <code>--pty bash</code> command provides an interactive shell</p>
+<p>Once the session starts, the hostname in your terminal prompt will change to show the name of the compute node.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>&lt;userid&gt;@node05<span class="w"> </span>~<span class="o">]</span>$
+</span></code></pre></div>
+</div>
+<p>The example above launches an interactive session without specifying memory requirements. By default, SLURM allocates only 2 CPUs and a 4-day time limit. To request custom CPU, GPU, memory, or time limit configurations, use the following command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>srun<span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">4</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--time<span class="o">=</span><span class="m">4</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>bash
+</span></code></pre></div>
+</div>
+<ul>
+<li><code>--gpus</code> option requests GPUs (1 in this case)</li>
+<li><code>--cpus-per-task</code> option requests CPUs (4 in this case)</li>
+<li><code>--mem</code> option requests RAM (4GB in this case)</li>
+<li><code>--time</code> option sets the time limit for the session (4 hours in this case)</li>
+</ul>
+<p>Once inside the interactive session, run echo $SLURM_JOB_ID to see the Job ID assigned to it. To view resource allocations and other details regarding the session, use the following command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">code</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID
+</span></code></pre></div>
+Filter and search for cpu, gpu, memory and time limit for the session.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../4_Modules_packages/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4. Modules in the cluster">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4. Modules in the cluster
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

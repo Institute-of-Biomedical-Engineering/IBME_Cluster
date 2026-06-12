@@ -1,4 +1,4 @@
-# 2. Transferring data to the Cluster
+# 2. Transferring data to the cluster
 
 ## Archiving file
 
@@ -18,20 +18,20 @@ Compare the reduction in size with the `du` command.
     $ du -sh data
     146M    data
     ```
-    The output shows the data directory have a size of 146M
+    The output shows the data directory has a size of 146M
 
     ```bash
     $ du -sh compressed_data.tar.gz
     48M    data
     ```
-    The compressed file have a size of 48M
+    The compressed file has a size of 48M
 
 
 
 ## Transferring files
 
 
-For Linux and macOS systems, the `rsync` command can be used to transfer files and directories to remote servers. For instance, to transfer the file `compressed_data.tar.gz` to user's home directory of the IBME cLuster, the following command can be used:
+For Linux and macOS systems, the `rsync` command can be used to transfer files and directories to remote servers. For instance, to transfer the file `compressed_data.tar.gz` to user's home directory on the IBME cluster, the following command can be used:
 
 !!! terminal "code"
     ```bash
@@ -40,13 +40,13 @@ For Linux and macOS systems, the `rsync` command can be used to transfer files a
 
     - `compressed_data.tar.gz` is the file to be transferred
 
-    - Replace the `<userid>` placeholder with username assigned for the IBME cluster
+    - Replace the `<userid>` placeholder with the username assigned for the IBME cluster
 
     - `engs-ibmecluster01.eng.ox.ac.uk` is the host name of the IBME cluster
 
     - Anything following the colon (`:`) specifies the destination path where the file will be copied on the cluster (in this case, `~/` represents your home directory).
 
-After running the above command, the IBME login node prompts the user for a password specific to the <userid>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in `/data/<userid>`.
+After running the above command, the IBME login node prompts the user for a password specific to the <userid>. Upon entering the password and pressing Enter, the file is successfully transferred to the destination. A similar command can also be used to transfer a directory and its content to the cluster. The files or directories can also be transferred to data storage located in the `/data/<userid>` directory.
 
 For Windows users, it is highly recommended to install the [**Windows Subsystem for Linux (WSL)**](https://github.com/microsoft/WSL) to use `rsync`. After successfully installing WSL, your local Windows drives are automatically mounted in the `/mnt` directory. From the WSL terminal, you can navigate directly to the folder containing your files or simply provide the exact path to the file in your `rsync` command.
 
@@ -67,11 +67,11 @@ FileZilla is a free file transfer software. It can be used to upload and downloa
 
 The software has two file browser windows: one for the local computer on the left and one for the remote server on the right. Initially, the remote server file browser remains empty until a connection to the server is established.
 
-To connect to the remote machine (in this case the IBME cluster), enter the following information in the Quickconnect bar at the top:
+To connect to the remote machine (in this case the IBME cluster), enter the following details in the Quickconnect bar at the top:
 
 - Host: *sftp://engs-ibmecluster01.eng.ox.ac.uk* (the host is *engs-ibmecluster01.eng.ox.ac.uk* and the *sftp* is the protocol)
-- Username: `<userid>` (Username in the host machine)
+- Username: `<userid>` (Username on the host machine)
 - Password: The password associated with the `<userid>`
 - Port: This can be left blank
 
-After entering the connection details, click **Quickconnect**. If the connection is successful, the remote server file browser will appear on the right. Navigate to the required location by selecting folders in the file browser or by entering the directory path in the address bar. For the remote server, entering the directory path directly is often more convenient. Files can then be transferred by dragging and dropping them between the left and right panels.
+After entering the connection details, click **Quickconnect**. If the connection is successful, the remote server file browser will appear on the right. Navigate to the required location by selecting folders in the file browser or entering the directory path in the address bar. For the remote server, entering the directory path directly is often more convenient. Files can then be transferred by dragging and dropping them between the left and right panels.

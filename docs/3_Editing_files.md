@@ -1,4 +1,4 @@
-# 3. Editing files on the Cluster
+# 3. Editing files on the cluster
 
 The `vim` and `nano` commands are useful for making small edits and quick corrections to files on the HPC system. However, unlike modern code editors, they lack many advanced development features, including Git integration, debugging tools, integrated terminals, extensions, and syntax/error checking for multiple programming languages. As a result, they can be less convenient and more difficult to use when writing scripts or programs from scratch.
 
@@ -22,7 +22,7 @@ See the steps below to connect VS Code to the IBME cluster:
 - Enable login terminal: Navigate to *File > Preferences > Settings* and search for *Remote.SSH: Show Login Terminal*. Ensure that the *Always reveal the SSH login terminal* option is checked. Restart VS Code.
 
 
-- Type *Ctrl + Shift + P* to open the command palette, then type *Remote-SSH: Connect to Host* the text box and select it from the dropdown menu. Next, choose *Add New SSH Host…* to add a new SSH connection.
+- Type *Ctrl + Shift + P* to open the command palette, then type *Remote-SSH: Connect to Host* in the text box and select it from the dropdown menu. Next, choose *Add New SSH Host…* to add a new SSH connection.
 
 <p align="center">
     <img src="../images/connect_host.png" width="720">
@@ -70,4 +70,4 @@ Note: Replace `<userid>` with your cluster username.
     <img src="../images/start_terminal.png" width="720">
 </p>
 
-- Log in to the head node using the command `ssh headnode1`. Once connected, Slurm commands and other IBME HPC utilities will be available directly within VS Code, allowing you to interact with the cluster.
+- Log in to the head node using the command `ssh headnode1`. Once connected, SLURM commands and other IBME HPC utilities will be available directly within VS Code, allowing you to interact with the cluster.

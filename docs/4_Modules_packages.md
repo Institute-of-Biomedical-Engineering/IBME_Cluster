@@ -1,4 +1,4 @@
-# 4. Moduels in the Cluster
+# 4. Modules in the cluster
 
 ## Pre-installed software
 
@@ -38,7 +38,7 @@ Before you can use Mamba on the IBME cluster, it must be installed (note that Ma
 
 - Log in to the IBME cluster - `ssh <userid>@engs-ibmecluster01.eng.ox.ac.uk`.
 
-- In the log in node make a shell variable `dir="/users/<userid>/miniforge3"`.
+- In the login node make a shell variable `dir="/users/<userid>/miniforge3"`.
 
 
 - Download the installer using `wget`. More information about the installer is available on the official GitHub [**repository**](https://github.com/conda-forge/miniforge/) repository.
@@ -85,9 +85,9 @@ Before you can use Mamba on the IBME cluster, it must be installed (note that Ma
         - nodefaults
     ```
 
-    nodefaults: means do not use the official Anaconda defaults channel
-    conda-forge: largest community-maintained channel
-    bioconda: Specialised channel for bioinformatics
+    nodefaults means do not use the official Anaconda defaults channel
+    conda-forge is the largest community-maintained channel
+    bioconda is a specialised channel for bioinformatics
 
 
 ## Installing software on the IBME cluster
@@ -122,7 +122,7 @@ The mamba environment can be deactivated using command:
 
 !!! terminal "code"
     ```bash
-    $ mamba deactivate ImageAnalysis
+    $ mamba deactivate
     ```
 
 
