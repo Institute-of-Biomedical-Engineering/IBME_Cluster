@@ -1,0 +1,53 @@
+.md-header {
+  height: 100px;
+  background-color: #002147;
+}
+
+
+.md-header__button.md-logo img {
+  height: 80px;   /* default is ~24px */
+}
+
+.md-typeset table {
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+/* .md-typeset .md-typeset__table {
+  display: flex;
+  justify-content: center;
+}
+
+.md-typeset table {
+  margin: 0;
+} */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 40px 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #002147, #0056b3); /* Oxford-style blue */
+  color: white;
+}
+
+.hero-logo {
+  width: 120px;
+  height: auto;
+}
+
+.hero-text h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.hero-text p {
+  margin: 5px 0 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
