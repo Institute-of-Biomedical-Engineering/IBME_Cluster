@@ -25,7 +25,7 @@
     
     
       
-        <title>5. Runing jobs in the IBME cluster - IBME HPC Cluster</title>
+        <title>5. Running jobs in the IBME cluster - IBME HPC Cluster</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-runing-jobs-in-the-ibme-cluster" class="md-skip">
+        <a href="#5-running-jobs-in-the-ibme-cluster" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Runing jobs in the IBME cluster
+              5. Running jobs in the IBME cluster
             
           </span>
         </div>
@@ -373,7 +373,7 @@
   <span class="md-ellipsis">
     
   
-    5. Runing jobs in the IBME cluster
+    5. Running jobs in the IBME cluster
   
 
     
@@ -391,7 +391,7 @@
   <span class="md-ellipsis">
     
   
-    5. Runing jobs in the IBME cluster
+    5. Running jobs in the IBME cluster
   
 
     
@@ -461,10 +461,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-job-option-configaration" class="md-nav__link">
+  <a href="#the-job-option-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The job option configaration
+        The job option configuration
       
     </span>
   </a>
@@ -561,10 +561,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-job-option-configaration" class="md-nav__link">
+  <a href="#the-job-option-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The job option configaration
+        The job option configuration
       
     </span>
   </a>
@@ -602,9 +602,9 @@
   
 
 
-<h1 id="5-runing-jobs-in-the-ibme-cluster">5. Runing jobs in the IBME cluster</h1>
+<h1 id="5-running-jobs-in-the-ibme-cluster">5. Running jobs in the IBME cluster</h1>
 <h2 id="batch-sessions">Batch Sessions</h2>
-<p>In batch computing environments, jobs are submitted to compute nodes through the SLURM scheduler. SLURM ensures that the resources (GPUs, CPUs and memory) are efficiently utilised across the cluster. It evaluates each job based on factors including requested runtime, required resources, and current cluster availability, then assigns priorities to determine job scheduling order.</p>
+<p>In batch computing environments, jobs are submitted to compute nodes through the SLURM scheduler. SLURM ensures that the resources (GPUs, CPUs and memory) are efficiently utilised across the cluster. It evaluates each job based on factors including requested time limit, required resources, and current cluster availability, then assigns priorities to determine job scheduling order.</p>
 <h2 id="submitting-jobs-using-slurm-and-mamba">Submitting jobs using SLURM and Mamba</h2>
 <p>To submit a job to a compute node via the SLURM scheduler, your commands must be included in a shell script (a <code>.sh</code> file). We have created an example script to walk you through the submission process and its requirements. Once you are connected to the IBME cluster, run the following commands from the login node:</p>
 <ul>
@@ -696,7 +696,7 @@
 </span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This job is running on node:&quot;</span>
 </span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>hostname
 </span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;GPU in this node are:&quot;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;GPUs in this node are:&quot;</span>
 </span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>nvidia-smi
 </span></code></pre></div>
 </div>
@@ -723,7 +723,7 @@
 It can be node05 depending on the availability of the nodes. </p>
 </div>
 <p>The job also generates a plot named plot.png, which is stored in the directory from which the job was submitted. Because HPC systems are remote machines without a graphical user interface (GUI), you cannot view this image directly on the cluster. It is recommended to transfer the file to your local computer using FileZilla or the rsync command; see <a href="https://institute-of-biomedical-engineering.github.io/IBME_Cluster/2_Transferring_files_to_remote_machine/">topic 2</a> for more details.</p>
-<h2 id="the-job-option-configaration">The job option configaration</h2>
+<h2 id="the-job-option-configuration">The job option configuration</h2>
 <p>SLURM jobs can be configured to run with several specific options. These options can be specified at the top of the shell script using the <code>#SBATCH</code> keyword, followed by the option name and its value. The option names can either be as a short or long format. The table below highlights some of the common options:</p>
 <div style="display: flex; justify-content: center;">
 <table>
@@ -783,7 +783,7 @@ It can be node05 depending on the availability of the nodes. </p>
 </tbody>
 </table>
 </div>
-<p>For example, to request 2 CPUs, 1 GPU, 4 GB of RAM, and a 10-minute runtime limit, add these #SBATCH directives to the top of your script before any commands:</p>
+<p>For example, to request 2 CPUs, 1 GPU, 4 GB of RAM, and a 10-minute time limit, add these #SBATCH directives to the top of your script before any commands:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="ch">#!/bin/bash</span>
@@ -807,11 +807,11 @@ It can be node05 depending on the availability of the nodes. </p>
 <p class="admonition-title">code</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID<span class="w"> </span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>This<span class="w"> </span><span class="nb">command</span><span class="w"> </span>displays<span class="w"> </span>a<span class="w"> </span>significant<span class="w"> </span>amount<span class="w"> </span>of<span class="w"> </span>job-specific<span class="w"> </span>information.<span class="w"> </span>To<span class="w"> </span>filter<span class="w"> </span>and<span class="w"> </span>view<span class="w"> </span>information<span class="w"> </span>specific<span class="w"> </span>to<span class="w"> </span>gpu<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span><span class="nb">command</span><span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>This<span class="w"> </span><span class="nb">command</span><span class="w"> </span>displays<span class="w"> </span>a<span class="w"> </span>significant<span class="w"> </span>amount<span class="w"> </span>of<span class="w"> </span>job-specific<span class="w"> </span>information.<span class="w"> </span>To<span class="w"> </span>filter<span class="w"> </span>and<span class="w"> </span>view<span class="w"> </span>information<span class="w"> </span>specific<span class="w"> </span>to<span class="w"> </span>GPU<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span><span class="nb">command</span><span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
 </span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>gres
 </span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>To<span class="w"> </span>filter<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>and<span class="w"> </span>view<span class="w"> </span>details<span class="w"> </span>specific<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>runtime,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>command:
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>To<span class="w"> </span>filter<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>and<span class="w"> </span>view<span class="w"> </span>details<span class="w"> </span>specific<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="nb">time</span><span class="w"> </span>limit,<span class="w"> </span>you<span class="w"> </span>can<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>command:
 </span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
 </span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>TimeLimit
 </span></code></pre></div>
@@ -828,24 +828,24 @@ It can be node05 depending on the availability of the nodes. </p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>&lt;userid&gt;@node05<span class="w"> </span>~<span class="o">]</span>$
 </span></code></pre></div>
 </div>
-<p>The example above launches an interactive session without specifying memory requirements. By default, SLURM allocates only 2 CPUs and a 4-day runtime limit. To request custom CPU, GPU, memory, or runtime configurations, use the following command:</p>
+<p>The example above launches an interactive session without specifying memory requirements. By default, SLURM allocates only 2 CPUs and a 4-day time limit. To request custom CPU, GPU, memory, or time limit configurations, use the following command:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>$<span class="w"> </span>srun<span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>--cpus-per-task<span class="o">=</span><span class="m">4</span><span class="w"> </span>--mem<span class="o">=</span>4G<span class="w"> </span>--time<span class="o">=</span><span class="m">4</span>:00:00<span class="w"> </span>--pty<span class="w"> </span>bash
 </span></code></pre></div>
 </div>
 <ul>
-<li><code>--gpus</code> options request GPUs (1 in this case)</li>
-<li><code>--cpus-per-task</code> options request CPUs (4 in this case)</li>
-<li><code>--mem</code> options request RAM (4GB in this case)</li>
-<li><code>--time</code> options request time limit for the session (4 hours in this case)</li>
+<li><code>--gpus</code> option requests GPUs (1 in this case)</li>
+<li><code>--cpus-per-task</code> option requests CPUs (4 in this case)</li>
+<li><code>--mem</code> option requests RAM (4GB in this case)</li>
+<li><code>--time</code> option sets the time limit for the session (4 hours in this case)</li>
 </ul>
 <p>Once inside the interactive session, run echo $SLURM_JOB_ID to see the Job ID assigned to it. To view resource allocations and other details regarding the session, use the following command:</p>
 <div class="admonition terminal">
 <p class="admonition-title">code</p>
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>$<span class="w"> </span>scontrol<span class="w"> </span>show<span class="w"> </span>job<span class="w"> </span>ID
 </span></code></pre></div>
-Filter and search for cpu, gpu, memory and runtime for the session.</p>
+Filter and search for cpu, gpu, memory and time limit for the session.</p>
 </div>
 
 
