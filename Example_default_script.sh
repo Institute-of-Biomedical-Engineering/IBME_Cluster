@@ -9,5 +9,3 @@ nvcc --version
 echo "This job is running on node:"
 hostname
 
-echo "GPU in this node are:"
-nvidia-smi
